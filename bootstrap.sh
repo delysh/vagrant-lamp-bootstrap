@@ -2,10 +2,14 @@
 
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='12345678'
-PROJECTFOLDER='myproject'
+HOMEDIRFOLDER='www'
+PROJECTFOLDER='projects'
 
 # create project folder
+sudo mkdir "/var/www/html/${HOMEDIRFOLDER}"
 sudo mkdir "/var/www/html/${PROJECTFOLDER}"
+
+echo "<?php phpinfo(); ?>" > /var/www/html/${HOMEDIRFOLDER}/index.php
 
 # update / upgrade
 sudo apt-get update
@@ -33,8 +37,8 @@ sudo apt-get -y install phpmyadmin
 # setup hosts file
 VHOST=$(cat <<EOF
 <VirtualHost *:80>
-    DocumentRoot "/var/www/html/${PROJECTFOLDER}"
-    <Directory "/var/www/html/${PROJECTFOLDER}">
+    DocumentRoot "/var/www/html/${HOMEDIRFOLDER}"
+    <Directory "/var/www/html/${HOMEDIRFOLDER}">
         AllowOverride All
         Require all granted
     </Directory>
