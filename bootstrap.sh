@@ -15,11 +15,14 @@ echo "<?php phpinfo(); ?>" > /var/www/html/${HOMEDIRFOLDER}/index.php
 sudo apt-get update
 sudo apt-get -y upgrade
 
+sudo apt-get install -y language-pack-UTF-8
+
 # install apache 2.5 and php 5.5
 sudo apt-get install -y apache2
 sudo apt-get install -y php5
 # install cURL and Mcrypt
-sudo apt-get install php5-curl
+sudo apt-get install -y php5-curl
+sudo apt-get install -y php5-mcrypt
 sudo php5enmod mcrypt
 
 # install mysql and give password to installer
